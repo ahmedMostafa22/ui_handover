@@ -21,39 +21,24 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         children: [
           OnBoardingPage(
               centerImagePath: AssetsPaths.dollar,
-              backgroundImageWidget: Align(
-                  alignment: AlignmentDirectional.topEnd,
-                  child: Image.asset(AssetsPaths.eclipse1,
-                      width: MediaQuery.of(context).size.width * .75)),
+              backgroundImagePath: AssetsPaths.eclipse1,
               pageNumber: 0,
               controller: controller),
           OnBoardingPage(
             centerImagePath: AssetsPaths.creditCard,
-            backgroundImageWidget: Align(
-                alignment: AlignmentDirectional.topEnd,
-                child: Image.asset(AssetsPaths.eclipse2,
-                    fit: BoxFit.fill,
-                    width: MediaQuery.of(context).size.width)),
+            backgroundImagePath: AssetsPaths.eclipse2,
             pageNumber: 1,
             controller: controller,
           ),
           OnBoardingPage(
             centerImagePath: AssetsPaths.notificationHeart,
-            backgroundImageWidget: Align(
-                alignment: AlignmentDirectional.topEnd,
-                child: Image.asset(AssetsPaths.eclipse3,
-                    fit: BoxFit.fill,
-                    width: MediaQuery.of(context).size.width)),
+            backgroundImagePath: AssetsPaths.eclipse3,
             pageNumber: 2,
             controller: controller,
           ),
           OnBoardingPage(
             centerImagePath: AssetsPaths.rocket,
-            backgroundImageWidget: Align(
-                alignment: AlignmentDirectional.topEnd,
-                child: Image.asset(AssetsPaths.eclipse4,
-                    fit: BoxFit.fill,
-                    width: MediaQuery.of(context).size.width)),
+            backgroundImagePath: AssetsPaths.eclipse4,
             pageNumber: 3,
             controller: controller,
           ),

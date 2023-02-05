@@ -4,18 +4,17 @@ import 'package:ui_challenge/constants/app_colors.dart';
 import 'package:ui_challenge/constants/assets_paths.dart';
 import 'package:ui_challenge/constants/fonts.dart';
 import 'package:ui_challenge/widgets/frosted_glass_wrapper.dart';
-import 'package:ui_challenge/widgets/on_boarding_page_indicator.dart';
 
 class OnBoardingPage extends StatelessWidget {
   const OnBoardingPage(
       {Key? key,
       required this.pageNumber,
       required this.centerImagePath,
-      required this.backgroundImageWidget,
+      required this.backgroundImagePath,
       required this.controller})
       : super(key: key);
   final String centerImagePath;
-  final Widget backgroundImageWidget;
+  final String backgroundImagePath;
   final PageController controller;
   final int pageNumber;
   @override
@@ -34,7 +33,13 @@ class OnBoardingPage extends StatelessWidget {
           child: Stack(
             alignment: Alignment.center,
             children: [
-              backgroundImageWidget,
+              Align(
+                  alignment: AlignmentDirectional.topEnd,
+                  child: Image.asset(backgroundImagePath,
+                      fit: BoxFit.fill,
+                      width: pageNumber == 0
+                          ? MediaQuery.of(context).size.width * .75
+                          : MediaQuery.of(context).size.width)),
               Align(
                 alignment: Alignment.topCenter,
                 child: Image.asset(
@@ -50,7 +55,7 @@ class OnBoardingPage extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * .4,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: const Color(0xFFFFFDEB).withOpacity(.5),
+                      color: const Color(0xFFFFFDEB),
                       border: const GradientBoxBorder(
                           gradient: LinearGradient(
                               begin: Alignment.topRight,
@@ -93,26 +98,22 @@ class OnBoardingPage extends StatelessWidget {
                                 style: AppTextStyles.semiBold,
                               ),
                               const Spacer(),
-                              OnBoardingPageIndicator(
-                                currentPage: pageNumber + 1,
-                                angle: 30 * (pageNumber + 1).toDouble(),
-                                child: InkWell(
-                                  onTap: () {
-                                    controller.nextPage(
-                                        duration:
-                                            const Duration(milliseconds: 500),
-                                        curve: Curves.easeIn);
-                                  },
-                                  child: Container(
-                                    width: 48,
-                                    height: 48,
-                                    decoration: BoxDecoration(
-                                        color: AppColors.primary600,
-                                        borderRadius: BorderRadius.circular(4)),
-                                    child: const Icon(
-                                      Icons.arrow_forward_ios,
-                                      size: 18,
-                                    ),
+                              InkWell(
+                                onTap: () {
+                                  controller.nextPage(
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      curve: Curves.easeIn);
+                                },
+                                child: Container(
+                                  width: 48,
+                                  height: 48,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.primary600,
+                                      borderRadius: BorderRadius.circular(4)),
+                                  child: const Icon(
+                                    Icons.arrow_forward_ios,
+                                    size: 18,
                                   ),
                                 ),
                               )
